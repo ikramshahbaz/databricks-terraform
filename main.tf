@@ -16,7 +16,6 @@ terraform {
 
 provider "azurerm" {
   features {}
-  client_id	 =  "9ceb9eb8-be00-45e0-9b38-f778914a5962"
 }
 
 #provider "databricks" {
