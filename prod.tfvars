@@ -1,5 +1,4 @@
-resourcegroup_name = "New_R"
-resourcegroup_name1 = "New_RG1"
+resourcegroup_name = "New_RG"
 network_name       = "Prod-Vent"
 tags = {
   Product     = "Name",
@@ -8,8 +7,6 @@ tags = {
 }
 address_space                = ["10.0.0.0/16"]
 location                     = "centralindia"
-#default_subnet_address_space = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"]
-#subnet_name                  = ["default", "public-subnet", "private-subnet"]
 default_subnet_name_address = { "default" = "10.0.0.0/24"
 }
 subnet_name_address = {  "public-subnet" = "10.0.1.0/24",
