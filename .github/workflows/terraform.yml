@@ -2,7 +2,7 @@ name: 'Terraform-Dataabricks'
 
 on:
   workflow_dispatch:
-    
+      
 jobs:
   terraform:
     name: 'Terraform'
@@ -25,7 +25,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init -backend-config="storage_account_name=shahbaz123ikr" -backend-config="container_name=test" -backend-config="access_key=${{secrets.access_key}}" -backend-config="key=terraform-databrciks-tfstate"
+      run: terraform init -backend-config="storage_account_name=${{secrets.storageaccountname}}" -backend-config="container_name=${{secrets.containername}}" -backend-config="access_key=${{secrets.access_key}}" -backend-config="key=${{secrets.statetf_file}}"
       working-directory: "."
       env:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
@@ -39,7 +39,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan  -var-file=prod.tfvars 
+      run: terraform plan  -var-file=./vars/prod.tfvars 
       working-directory: "."
       env:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
@@ -50,7 +50,7 @@ jobs:
     - name: Terraform Apply
       id: apply
       run:
-        terraform apply -var-file=prod.tfvars  -auto-approve -lock=false
+        terraform apply -var-file=./vars/prod.tfvars   -auto-approve -lock=false
       working-directory: "."
       env:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
