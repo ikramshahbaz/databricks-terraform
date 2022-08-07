@@ -28,6 +28,10 @@ variable "default_subnet_name_address" {
   type = map(any)
 }
 
+#variable "default_subnet_address_space" {
+#  type = list(string)
+#}
+
 variable "subnet_name_address" {
   type = map(any)
 }
