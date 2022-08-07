@@ -24,7 +24,7 @@ containers = { "phoenix" = "private",
   "artifact" = "blob"
 }
 databricks_name = "databricks"
-clustername = "test-clustername"
+clustername = "testcluster"
 
 
 
