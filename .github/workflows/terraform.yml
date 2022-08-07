@@ -25,7 +25,10 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -backend-config="storage_account_name=shahbaz123ikr" \
+           -backend-config="container_name=test" \
+           -backend-config="access_key=bwbr4Bf23SYr9t8HszqA0HN8z/V0rmWdbteovIYYvaFXH9EpznJi80O96ZtkHN9KwgqiJcl8wZti+AStqwNTAQ==" \
+           -backend-config="key=terraform-databrciks-tfstate"
       working-directory: "."
       env:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
