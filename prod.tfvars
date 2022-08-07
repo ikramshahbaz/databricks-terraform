@@ -1,4 +1,5 @@
-resourcegroup_name = "New_RG"
+resourcegroup_name = "New_R"
+resourcegroup_name1 = "New_RG1"
 network_name       = "Prod-Vent"
 tags = {
   Product     = "Name",

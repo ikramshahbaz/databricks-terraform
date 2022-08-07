@@ -4,15 +4,19 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">=3.0.0"
     }
-	backend "azurerm" {}
+	
 	databricks = {
       source = "databricks/databricks"
     }
+	
   }
+  backend "azurerm" {}
+  
 }
 
 provider "azurerm" {
   features {}
+  client_id	 =  "9ceb9eb8-be00-45e0-9b38-f778914a5962"
 }
 
 #provider "databricks" {
@@ -37,6 +41,12 @@ resource "azurerm_resource_group" "resourcegroup" {
 
 }
 
+resource "azurerm_resource_group" "resourcegroup1" {
+  name     = var.resourcegroup_name1
+  location = var.location
+  tags     = var.tags
+
+}
 
 #resource "azurerm_virtual_network" "virtualnetwork" {
 #  name                = var.network_name
