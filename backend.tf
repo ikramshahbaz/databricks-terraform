@@ -1,4 +1,4 @@
-terraform {
+/*terraform {
 backend "azurerm" {
 	resource_group_name  = "New_RG"
 	storage_account_name = "phoenixteam7892"
@@ -6,3 +6,4 @@ backend "azurerm" {
 	key = "terraform.tfstate"
 	}
 }
+*/
