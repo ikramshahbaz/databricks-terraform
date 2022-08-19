@@ -61,9 +61,9 @@ jobs:
     - name: update file and push to remote
       run: |
          echo "Test push commit to the remote in the workflow" >> test.txt
-         git config --global user.name "github-actions[bot]"
-         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         git config --global user.name "ikramshahbaz"
+         git config --global user.email "ikramshahbaz@gmail.com"
          git add -A "*.tfstate"
-         git commit -m "Update test.txt"
+         git commit -m "state file uploaded"
          git push
 
