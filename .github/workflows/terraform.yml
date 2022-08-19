@@ -22,6 +22,8 @@ jobs:
     - name: update file and push to remote
       run: |
          echo "Test push commit to the remote in the workflow" >> test.txt
+         echo "Test push commit to the remote in the workflow" >> test2.txt
+         echo "Test push commit to the remote in the workflow" >> test1.txt
          git config --global user.name "ikramshahbaz"
          git config --global user.email "ikramshahbaz@gmail.com"
          git add -A
