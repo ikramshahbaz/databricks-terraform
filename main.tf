@@ -1,10 +1,10 @@
 
 module "databricks" {
-	source = "./module/databricks"
-	resourcegroup_name  			= var.resourcegroup_name
-	tags 							= var.tags
-	location                        = var.location
-	/*
+  source             = "./module/databricks"
+  resourcegroup_name = var.resourcegroup_name
+  tags               = var.tags
+  location           = var.location
+  /*
 	address_space                   = var.address_space
 	network_name        			= var.network_name
 	default_subnet_name				= var.default_subnet_name
