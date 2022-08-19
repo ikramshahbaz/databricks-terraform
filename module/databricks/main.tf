@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "resourcegroup" {
   tags     = var.tags
 }
 
-
+/*
 resource "azurerm_virtual_network" "virtualnetwork" {
   name                = var.network_name
   resource_group_name = azurerm_resource_group.resourcegroup.name
@@ -200,3 +200,4 @@ resource "databricks_cluster" "shared_autoscaling" {
   }
 }
 
+*/
