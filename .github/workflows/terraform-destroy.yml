@@ -1,0 +1,48 @@
+name: 'Terraform-Destroy-Dataabricks'
+
+on:
+  workflow_dispatch:
+      
+jobs:
+  terraform:
+    name: 'Terraform-destroy'
+    runs-on: ubuntu-latest
+    environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        ref: ${{ github.ref }}
+        fetch-depth: 0
+        
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init #-backend-config="storage_account_name=${{secrets.storageaccountname}}" -backend-config="container_name=${{secrets.containername}}" -backend-config="access_key=${{secrets.access_key}}" -backend-config="key=${{secrets.statetf_file}}"
+      working-directory: "."
+      env:
+        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID}}
+        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID}}
+        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET}}
+
+    - name: Terraform Destroy
+      id: destroy
+      run:
+        terraform destroy -var-file=./vars/prod.tfvars   -auto-approve 
+      working-directory: "."
+      env:
+        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID}}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID}}
+        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID}}
+        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET}} 
