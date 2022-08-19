@@ -63,13 +63,13 @@ jobs:
         
     - name: update file and push to remote
       run: |
-         echo "Test push commit to the remote in the workflow" >> test.txt
          git config --global user.name "ikramshahbaz"
          git config --global user.email "ikramshahbaz@gmail.com"
          git pull
          echo ".terraform/*" >> .gitignore
          echo ".terraform.*" >> .gitignore
          echo "*.bak" >> .gitignore
+         echo "*.gitignore" >> .gitignore
          git add .
          git commit  -m "state file uploaded"
          git push 
