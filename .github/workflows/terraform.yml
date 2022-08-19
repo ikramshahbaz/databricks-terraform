@@ -66,7 +66,10 @@ jobs:
          echo "Test push commit to the remote in the workflow" >> test.txt
          git config --global user.name "ikramshahbaz"
          git config --global user.email "ikramshahbaz@gmail.com"
-         git add -a "*.tfstate"
-         git commit -m "state file uploaded"
+         git pull
+         echo ".terraform/*" >> .gitignore
+         echo ".terraform.* >> .gitignore
+         echo "*.bak" >> .gitignore
+         git commit -a -m "state file uploaded"
          git push 
 
