@@ -68,8 +68,9 @@ jobs:
          git config --global user.email "ikramshahbaz@gmail.com"
          git pull
          echo ".terraform/*" >> .gitignore
-         echo ".terraform.* >> .gitignore
+         echo ".terraform.*" >> .gitignore
          echo "*.bak" >> .gitignore
-         git commit -a -m "state file uploaded"
+         git add .
+         git commit  -m "state file uploaded"
          git push 
 
