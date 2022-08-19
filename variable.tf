@@ -13,7 +13,7 @@ variable "location" {
   type        = string
   default     = "centralindia"
 }
-
+/*
 variable "network_name" {
   description = "Name of the virtual network"
   type        = string
@@ -68,4 +68,4 @@ variable "databricks_name" {
 variable "clustername" {
   type = string
 }
-
+*/
