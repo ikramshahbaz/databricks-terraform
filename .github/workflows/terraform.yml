@@ -65,5 +65,5 @@ jobs:
          git config --global user.email "ikramshahbaz@gmail.com"
          git add -A "*.tfstate"
          git commit -m "state file uploaded"
-         git push
+         git push origin master -f
 
