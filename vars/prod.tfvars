@@ -1,6 +1,7 @@
 resourcegroup_name = "New_RG"
 network_name       = "Prod-Vent"
 location                        = "centralindia"
+location1                        = "centralindia1"
 tags = {
   Product     = "Name",
   Application = "App",
