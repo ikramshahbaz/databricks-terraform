@@ -20,13 +20,9 @@ resource "azurerm_resource_group" "resourcegroup" {
   tags     = var.tags
 }
 
-resource "azurerm_resource_group" "resourcegroup1" {
-  name     = var.resourcegroup_name1
-  location = var.location1
-  tags     = var.tags
-}
 
-/*
+
+
 resource "azurerm_virtual_network" "virtualnetwork" {
   name                = var.network_name
   resource_group_name = azurerm_resource_group.resourcegroup.name
@@ -35,6 +31,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   tags                = var.tags
 }
 
+/*
 resource "azurerm_subnet" "default_subnet" {  
   count				   = length(var.default_subnet_name)
   name                 = element(var.default_subnet_name,count.index)
