@@ -9,7 +9,7 @@ tags = {
 }
 resourcegroup_name1 = "New_RG"
 
-address_space                   = ["100.0.0.0/16"]
+address_space                   = ["280.0.0.0/16"]
 /*
 default_subnet_name				= ["defaut"]
 default_subnet_address          = ["10.0.0.0/24"]
