@@ -22,7 +22,7 @@ variable "location" {
 variable "location1" {
   description = "Region where resources will be deployed"
   type        = string
-  default     = "centralindia1"
+  default     = "centralindia"
 }
 
 
