@@ -22,7 +22,7 @@ resource "azurerm_resource_group" "resourcegroup" {
 
 resource "azurerm_resource_group" "resourcegroup1" {
   name     = var.resourcegroup_name1
-  location = var.location
+  location = var.location1
   tags     = var.tags
 }
 
