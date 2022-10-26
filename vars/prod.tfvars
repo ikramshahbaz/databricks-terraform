@@ -6,6 +6,7 @@ tags = {
   Application = "App",
   Owner       = "Email"
 }
+resourcegroup_name1 = "New_RG"
 /*
 address_space                   = ["10.0.0.0/16"]
 default_subnet_name				= ["defaut"]
