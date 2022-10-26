@@ -20,6 +20,12 @@ resource "azurerm_resource_group" "resourcegroup" {
   tags     = var.tags
 }
 
+resource "azurerm_resource_group" "resourcegroup1" {
+  name     = var.resourcegroup_name1
+  location = var.location
+  tags     = var.tags
+}
+
 /*
 resource "azurerm_virtual_network" "virtualnetwork" {
   name                = var.network_name
