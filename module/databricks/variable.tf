@@ -18,6 +18,13 @@ variable "location" {
   type        = string
   default     = "centralindia"
 }
+
+variable "location1" {
+  description = "Region where resources will be deployed"
+  type        = string
+  default     = "centralindia1"
+}
+
 /*
 variable "network_name" {
   description = "Name of the virtual network"
