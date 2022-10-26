@@ -5,9 +5,10 @@ module "databricks" {
   resourcegroup_name1 = var.resourcegroup_name1
   tags               = var.tags
   location           = var.location
-  /*
+
 	address_space                   = var.address_space
 	network_name        			= var.network_name
+	  /*
 	default_subnet_name				= var.default_subnet_name
 	default_subnet_address          = var.default_subnet_address
 	databricks_subnet_name          = var.databricks_subnet_name
