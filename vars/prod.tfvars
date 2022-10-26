@@ -1,15 +1,16 @@
 resourcegroup_name = "New_RG"
 network_name       = "Prod-Vent"
 location                        = "centralindia"
-location1                        = "centralindia1"
+location1                        = "centralindia"
 tags = {
   Product     = "Name",
   Application = "App",
   Owner       = "Email"
 }
 resourcegroup_name1 = "New_RG"
-/*
+
 address_space                   = ["10.0.0.0/16"]
+/*
 default_subnet_name				= ["defaut"]
 default_subnet_address          = ["10.0.0.0/24"]
 databricks_subnet_name          = ["public-subnet","private-subnet"]
