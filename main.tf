@@ -2,7 +2,7 @@
 module "databricks" {
   source             = "./module/databricks"
   resourcegroup_name = var.resourcegroup_name
-  resourcegroup_name = var.resourcegroup_name1
+  resourcegroup_name1 = var.resourcegroup_name1
   tags               = var.tags
   location           = var.location
   /*
