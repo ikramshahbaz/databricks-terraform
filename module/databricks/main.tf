@@ -5,6 +5,11 @@ provider "databricks" {
 
 data "azurerm_client_config" "current_config" {}
 
+data "azurerm_resource_group" "example" {
+  name = "test"
+}
+
+
 resource "random_string" "storage_account_name" {
   length  = 5
   lower   = true
@@ -14,18 +19,19 @@ resource "random_string" "storage_account_name" {
 }
 
 
-resource "azurerm_resource_group" "resourcegroup" {
-  name     = var.resourcegroup_name
-  location = var.location
-  tags     = var.tags
-}
+#resource "azurerm_resource_group" "resourcegroup" {
+ # name     = var.resourcegroup_name
+ # location = var.location
+ # tags     = var.tags
+#}
 
 
 
 
 resource "azurerm_virtual_network" "virtualnetwork" {
   name                = var.network_name
-  resource_group_name = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   location            = azurerm_resource_group.resourcegroup.location
   address_space       = var.address_space
   tags                = var.tags
@@ -35,7 +41,8 @@ resource "azurerm_virtual_network" "virtualnetwork" {
 resource "azurerm_subnet" "default_subnet" {  
   count				   = length(var.default_subnet_name)
   name                 = element(var.default_subnet_name,count.index)
-  resource_group_name  = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.virtualnetwork.name
   address_prefixes     = [element(var.default_subnet_address,count.index)]
 }
@@ -43,7 +50,8 @@ resource "azurerm_subnet" "default_subnet" {
 resource "azurerm_subnet" "databricks_internal_subnet" {
   count				   = length(var.databricks_subnet_name)
   name                 = element(var.databricks_subnet_name,count.index)
-  resource_group_name  = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.virtualnetwork.name
   address_prefixes     = [element(var.databricks_subnet_address,count.index)]
   depends_on = [ 
@@ -64,7 +72,8 @@ resource "azurerm_subnet" "databricks_internal_subnet" {
 
 resource "azurerm_network_security_group" "public_databricks_nsg" {
   name                = "public-databricks_nsg"
-  resource_group_name = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   location            = azurerm_resource_group.resourcegroup.location
   depends_on = [ 
 				azurerm_virtual_network.virtualnetwork
@@ -73,7 +82,8 @@ resource "azurerm_network_security_group" "public_databricks_nsg" {
 
 resource "azurerm_network_security_group" "private_databricks_nsg" {
   name                = "private-databricks-nsg"
-  resource_group_name = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   location            = azurerm_resource_group.resourcegroup.location
   depends_on = [ 
 				azurerm_virtual_network.virtualnetwork
@@ -100,7 +110,8 @@ resource "azurerm_subnet_network_security_group_association" "private_databricks
 
 resource "azurerm_storage_account" "storage_account" {
   name                      = "${var.accountname}${random_string.storage_account_name.result}"
-  resource_group_name       = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   location                  = azurerm_resource_group.resourcegroup.location
   account_kind              = var.storage_config.account_kind
   account_tier              = var.storage_config.account_type
@@ -157,7 +168,8 @@ resource "azurerm_storage_container" "containers" {
 
 resource "azurerm_databricks_workspace" "databricks" {
   name                        = var.databricks_name
-  resource_group_name         = azurerm_resource_group.resourcegroup.name
+  #resource_group_name = azurerm_resource_group.resourcegroup.name
+  resource_group_name =  data.azurerm_resource_group.example.name
   location                    = azurerm_resource_group.resourcegroup.location
   sku                         = "standard"
   tags                        = var.tags
