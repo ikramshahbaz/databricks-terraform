@@ -7,6 +7,7 @@ data "azurerm_client_config" "current_config" {}
 
 data "azurerm_resource_group" "example" {
   name = "test"
+	location = "southindia"
 }
 
 
@@ -32,7 +33,8 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   name                = var.network_name
   #resource_group_name = azurerm_resource_group.resourcegroup.name
   resource_group_name =  data.azurerm_resource_group.example.name
-  location            = azurerm_resource_group.resourcegroup.location
+  #location            = azurerm_resource_group.resourcegroup.location
+   location = "southindia"
   address_space       = var.address_space
   tags                = var.tags
 }
@@ -74,7 +76,8 @@ resource "azurerm_network_security_group" "public_databricks_nsg" {
   name                = "public-databricks_nsg"
   #resource_group_name = azurerm_resource_group.resourcegroup.name
   resource_group_name =  data.azurerm_resource_group.example.name
-  location            = azurerm_resource_group.resourcegroup.location
+   #location            = azurerm_resource_group.resourcegroup.location
+   location = "southindia"
   depends_on = [ 
 				azurerm_virtual_network.virtualnetwork
 			]
@@ -84,7 +87,8 @@ resource "azurerm_network_security_group" "private_databricks_nsg" {
   name                = "private-databricks-nsg"
   #resource_group_name = azurerm_resource_group.resourcegroup.name
   resource_group_name =  data.azurerm_resource_group.example.name
-  location            = azurerm_resource_group.resourcegroup.location
+   #location            = azurerm_resource_group.resourcegroup.location
+   location = "southindia"
   depends_on = [ 
 				azurerm_virtual_network.virtualnetwork
 			]
@@ -112,7 +116,8 @@ resource "azurerm_storage_account" "storage_account" {
   name                      = "${var.accountname}${random_string.storage_account_name.result}"
   #resource_group_name = azurerm_resource_group.resourcegroup.name
   resource_group_name =  data.azurerm_resource_group.example.name
-  location                  = azurerm_resource_group.resourcegroup.location
+   #location            = azurerm_resource_group.resourcegroup.location
+   location = "southindia"
   account_kind              = var.storage_config.account_kind
   account_tier              = var.storage_config.account_type
   access_tier               = var.storage_config.access_tier
@@ -170,7 +175,8 @@ resource "azurerm_databricks_workspace" "databricks" {
   name                        = var.databricks_name
   #resource_group_name = azurerm_resource_group.resourcegroup.name
   resource_group_name =  data.azurerm_resource_group.example.name
-  location                    = azurerm_resource_group.resourcegroup.location
+   #location            = azurerm_resource_group.resourcegroup.location
+   location = "southindia"
   sku                         = "standard"
   tags                        = var.tags
   managed_resource_group_name = "${var.databricks_name}-managed-rg"
