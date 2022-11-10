@@ -35,7 +35,7 @@ variable "address_space" {
   type        = list(string)
   description = "The address space that is used by the virtual network."
 }
-/*
+
 variable "default_subnet_name" {
   type = list(string)
   description = "Name of the default subnet"
@@ -80,4 +80,4 @@ variable "databricks_name" {
 variable "clustername" {
   type = string
 }
-*/
+
