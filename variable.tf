@@ -1,12 +1,12 @@
-variable "resourcegroup_name" {
-  description = "Name of the resource group"
-  type        = string
-}
+#variable "resourcegroup_name" {
+#  description = "Name of the resource group"
+ # type        = string
+#}
 
-variable "resourcegroup_name1" {
-  description = "Name of the resource group"
-  type        = string
-}
+#variable "resourcegroup_name1" {
+#  description = "Name of the resource group"
+#  type        = string
+#}
 
 variable "tags" {
   type        = map(string)
