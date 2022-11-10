@@ -39,7 +39,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   tags                = var.tags
 }
 
-/*
+
 resource "azurerm_subnet" "default_subnet" {  
   count				   = length(var.default_subnet_name)
   name                 = element(var.default_subnet_name,count.index)
@@ -221,4 +221,4 @@ resource "databricks_cluster" "shared_autoscaling" {
   }
 }
 
-*/
+
