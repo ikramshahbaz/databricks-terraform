@@ -6,7 +6,7 @@ provider "databricks" {
 data "azurerm_client_config" "current_config" {}
 
 data "azurerm_resource_group" "example" {
-  name = "test"
+  name = "new"
 	#location = "southindia"
 }
 
