@@ -1,4 +1,4 @@
-resourcegroup_name = "New_RG"
+#resourcegroup_name = "New_RG"
 network_name       = "Prod-Vent"
 location                        = "centralindia"
 location1                        = "centralindia"
@@ -7,10 +7,10 @@ tags = {
   Application = "App",
   Owner       = "Email"
 }
-resourcegroup_name1 = "New_RG"
+#resourcegroup_name1 = "New_RG"
 
 address_space                   = ["280.0.0.0/16"]
-/*
+
 default_subnet_name				= ["defaut"]
 default_subnet_address          = ["10.0.0.0/24"]
 databricks_subnet_name          = ["public-subnet","private-subnet"]
@@ -29,7 +29,7 @@ containers = {
 databricks_name                 = "databricks"
 clustername                     = "testcluster"
 
-*/
+
 
 
 
